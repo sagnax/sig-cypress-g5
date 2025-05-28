@@ -1,93 +1,314 @@
-# sig-cypress
+# CYPRESS SIGFAP
+
+# Pré-requisitos
+
+ Para a realização do trabalho, serão  necessários conhecimentos prévios e a instalação de algumas ferramentas, listadas abaixo.
+
+## Ferramentas
+
+Antes de começar, certifique-se de que as seguintes ferramentas estejam instaladas em seu computador.
+
+- [git](https://git-scm.com/)
+- [Node.js](https://nodejs.org/en/)
+- npm
+- [Visual Studio Code](https://code.visualstudio.com/)
+
+> **Obs.1:** Ao instalar o Node.js, o npm é instalado junto. 
+>
+> **Obs.2:** Para verificar as versões do git, Node.js e npm instaladas em seu computador, execute o comando `git --version && node --version && npm --version` em seu terminal de linha de comando.
+>
+> **Obs.3:** Recomendamos a utilização do Visual Studio Code, entretanto, também poderá ser utilizada uma IDE de sua preferência.
+>
+> **Obs.4:** Caso utilize o Visual Studio Code, recomendamos a instalação da Extensão `Prettier - Code formatter`.
+
+## Conhecimentos
+
+É necessário que você possua ao menos conhecimentos básicos de:
+
+- JavaScript e TypeScript
+- Seletores CSS
+- Linha de comando
+- git
+
+# Clone do projeto [OBS: Revisar e definir] 
+
+1. Abra o navegador e visite a URL [\[ACESSO AO PROJETO\]](https://git.ledes.net/ledes/sig-cypress)
+
+2. Faça baixem o do projeto via HTTPS.
+
+3. No projeto, clique no botão **Code**, escolha a opção _clone via HTTPS_ e copie o link de clone do projeto.
+
+4. Em seu terminal de linha de comando (em uma pasta onde você armazena seus projetos de software), execute o comando `git clone [cole-o-link-copiado-aqui]`.
+
+5. Após clonar o projeto, acesse o diretório recém-clonado (`cd sig-cypress/`).
 
 
+# Instalação e inicialização do [Cypress](https://cypress.io)
 
-## Getting started
+1. Na raiz do projeto, execute o comando `npm init -y` para inicializar um projeto npm, isso é feito para que o projeto contenha um arquivo `package.json`
+2. Na raiz do projeto, execute o comando `npm install cypress --save-dev` (ou `npm i cypress -D` para a versão curta).
+3. Execute o comando `npx cypress open` para abrir o Cypress pela primeira vez, o ambiente e2e de testes já está configurado.
+4. Este será o ambiente de testes Cypress, antes de iniciar os testes feche o _Cypress_App_ e faça a leitura das instruções abaixo.
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+> **Obs.:** Quando o _Cypress App_ é iniciado pela primeira vez sem ser previamente configurado, o Cypress mostra opções de inicialização recomendadas.
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+# Começando o trabalho
 
-## Add your files
+## Explicando o teste exemplo - Edital Simples
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/topics/git/add_files/#add-files-to-a-git-repository) or push an existing Git repository with the following command:
+1. Abra o arquivo `edital-simples.cy.ts`, este é um teste e2e (end to end) que cria um Edital Simples no sistema.
+    - O bloco `describe` define a suite de testes e o bloco `it` define o caso de teste.
+    - `cy.typelogin` é uma função customizada cypress criada dentro do arquivo `/support/commands.ts`.
+    - `getCurrentDateTime()` é uma função para trazer a data atual, podendo ser utilizada para definir datas anteriores ou posteriores para auxílio nos testes.
 
-```
-cd existing_repo
-git remote add origin https://git.ledes.net/ledes/sig-cypress.git
-git branch -M main
-git push -uf origin main
-```
+> Obs: Este arquivo foi comentado linha a linha para facilitar a compreensão básica do funcionamento do teste com cypress.
 
-## Integrate with your tools
+---
 
-- [ ] [Set up project integrations](https://git.ledes.net/ledes/sig-cypress/-/settings/integrations)
+## Introdução - Solicitação do Edital Simples:
 
-## Collaborate with your team
+## Teste de E.S. (Edital Simples)
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/user/project/merge_requests/auto_merge/)
+1. Em Informações do Edital
+- Em Identificação do Edital
+    - Titulo do Edital
+    > Utilizar: `[grupoalunos-numero] [E.S.] [código]/[ano] [nomealuno-sobrenomealuno]`
+    >
+    > Exemplo: Grupo-01 E.S. 005/2025 joão-neves
+    >
+    > [GrupoAlunos-numero]: Número do Grupo definido pelo Professor (01 a 99)
+    >
+    > [E.S.]: Edital Simples
+    >
+    > [código]: Código de 3 digitos (000 a 999)
+    >
+    > [ano]: Ano de criação do Edital
+    >
+    > [nomealuno-sobrenomealuno]: nome e sobrenome do acadêmico
+- Restrições
+    - Opções de Restrições [Checkbox]
+    > Marcar a opção "Definir a duração do projeto em meses" e adicionar uma duração em quantidade de meses.
+2. Em Cronograma
+- Em Período de Submissão
+    - Adicionar a data inicial e final (formato: DD/MM/YYYY hh:mm:ss).
+    > A data final sempre deve ser posterior a data inicial.
+3. Em Orçamento
+- Em Programa
+    - Adicionar um programa a este Edital
+    > Selecionar um dos programas da `Caixa de Seleção`. 
+4. Finalizar
+    - Clicar no botão Salvar.
+    - Clicar no botão Finalizar.
 
-## Test and Deploy
 
-Use the built-in continuous integration in GitLab.
+**Resultado esperado:**
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+Após a realização do Teste Cypress se espera que o Edital tenha sido criado com sucesso e apareça na tela de visualização dos Editais.
 
-***
+## Passo a passo:
 
-# Editing this README
+1. Abra o arquivo `edital-simples.cy.ts` e edite `[URL do sistema]`, `[E-mail do usuário]` e `[Senha do usuário]` estes dados serão informados pelo Professor.
+2. No mesmo arquivo edite `Titulo do Edital` conforme o padrão descrito na solicitação.
+3. Salve o arquivo, abra o terminal e execute o comando `npx cypress open`, clique em `E2E Testing`, escolha o navegador de sua preferência e clique em `Start E2E Testing`. 
+4. Uma janela do navegador escolhido será aberta, em seguida clique em: `edital-simples.cy.ts` e então o teste será iniciado, acompanhe a execução do teste pelo Cypress que realizará a criação de um Edital Simples no sistema.
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+> Obs: Diante da leitura e compreensão básica do teste `edital-simples.cy.ts` e do texto da solicitação agora vamos ao trabalho.
 
-## Suggestions for a good README
+---
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+## Atividade 1 - Realizar o Teste Edital Médio
 
-## Name
-Choose a self-explaining name for your project.
+1. Crie um novo teste e2e: `edital-medio.cy.ts`.
+2. Neste teste resolva a solicitação abaixo:
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+## Teste de E.M. (Edital Médio)
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+1. Em Informações do Edital
+- Em Identificação do Edital
+    - Titulo do Edital
+    > Utilizar: `[grupoalunos-numero] [E.M.] [código]/[ano] [nomealuno-sobrenomealuno]`
+    >
+    > Exemplo: Grupo-01 E.M. 005/2025 joão-neves
+    >
+    > [grupoalunos-numero]: Número do Grupo definido pelo Professor (01 a 99)
+    >
+    > [E.M.]: Edital Médio
+    >
+    > [código]: Código de 3 digitos (000 a 999)
+    >
+    > [ano]: Ano de criação do Edital
+    >
+    > [nomealuno-sobrenomealuno]: nome e sobrenome do acadêmico
+- Em Restrições
+    - Opções de Restrições [Checkbox]
+    > Marcar a opção "Definir a duração do projeto em meses" e adicionar uma duração em quantidade de meses.
+    >
+    > Marcar a opção "Pesquisador pode submeter mais de uma proposta".
+- Em Termo de Aceite
+    - Adicionar um texto de Termo de Aceite
+- Em Texto do Edital
+    - Adicionar um Texto do Edital
+- Em Abrangência
+    - Adicionar mais de duas Abrangências (Escolha de preferência)
+2. Em Cronograma
+- Em Período de Submissão
+    - Adicionar a data inicial e final.
+    > formato de data: DD/MM/YYYY hh:mm:ss
+    >
+    > A data final sempre deve ser posterior a data inicial.
+3. Em Orçamento
+- Em Programa
+    - Adicionar um Programa a este Edital
+    > Selecionar um dos programas da `Caixa de Seleção`. 
+4. Em Perguntas
+- Em Indicadores de Produção
+    - Adicionar os três Indicadores de Produção
+5. Finalizar
+    - Clicar no botão Salvar.
+    - Clicar no botão Finalizar.
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+**Resultado esperado:**
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+Após a realização do Teste Cypress se espera que o Edital tenha sido criado com sucesso e apareça na tela de visualização dos Editais.
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+---
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## Atividade 2 - Realizar o Teste Edital Completo
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+1. Crie um novo teste e2e: `edital-completo.cy.ts`.
+2. Neste teste resolva a solicitação abaixo:
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+## Teste E.C. (Edital Completo):
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+1. Em Informações do Edital
+- Em Identificação do Edital
+    - Titulo do Edital
+    > Utilizar: `[grupoalunos-numero] [E.C.] [código]/[ano] [nomealuno-sobrenomealuno]`
+    >
+    > Exemplo: Grupo-01 E.C. 005/2025 joão-neves
+    >
+    > [grupoalunos-numero]: Número do Grupo definido pelo Professor (01 a 99)
+    >
+    > [E.C.]: Edital Completo
+    >
+    > [código]: Código de 3 digitos (000 a 999)
+    >
+    > [ano]: Ano de criação do Edital
+    >
+    > [nomealuno-sobrenomealuno]: nome e sobrenome do acadêmico
+- Em Restrições
+    - Opções de Restrições [Checkbox]
+    > Marcar a opção "Definir a duração do projeto em meses" e adicionar uma duração em quantidade de meses.
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+    > Marcar a opção "Pesquisador pode submeter mais de uma proposta" e adicionar uma duração em quantidade de meses.
+- Em Termo de Aceite
+    - Adicionar um texto de Termo de Aceite
+- Em Texto do Edital
+    - Adicionar um Texto do Edital
+- Em Abrangência
+    - Marcar a opção "Todos" em Abrangência
+- Em Informações Complementares
+    - Adicionar 5 ou mais perguntas de Informações Complementares
+2. Em Cronograma
+- Em Período de Submissão
+    - Adicionar a data inicial e final.
+    > formato de data: DD/MM/YYYY hh:mm:ss
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+    > A data final sempre deve ser posterior a data inicial.
+3. Em Orçamento
+- Em Programa
+    - Adicionar um Programa a este Edital
+    > Selecionar um dos programas da `Caixa de Seleção`. 
+    - Selecionar um Programa com Rubricas
+- Em Rubricas
+    - Adicionar todas as Rubricas
+    > Para adicionar uma Rubrica unitária Clique no botão "Adicionar", selecione uma Rubrica e uma Natureza Despesa e clique no botão "Confirmar".
+- Em Faixas de Financiamento
+    - Adicionar pelo menos 5 faixas de Financiamento
+4. Em Documentos
+- Em Documentos da Proposta
+    - Criar pelo menos dois documentos da proposta
+- Em Documentos Pessoais
+    - Adicionar 5 ou mais Documentos Pessoais
+5. Em Perguntas
+    - Adicionar 5 ou mais perguntas de Descrição do Projeto
+    - Adicionar os três Indicadores de Produção
+6. Em Bolsas do Edital
+- Em Bolsas
+    - Adicionar pelo menos 5 modalidades e níveis de bolsas
+7. Finalizar
+    - Clicar no botão Salvar.
+    - Clicar no botão Finalizar.
 
-## License
-For open source projects, say how it is licensed.
+**Resultado esperado:**
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Após a realização do Teste Cypress se espera que o Edital tenha sido criado com sucesso e apareça na tela de visualização dos Editais.
+
+---
+
+## Atividade 3 - Realizar o Teste de Submissão de Proposta do E.S. (Edital Simples)
+
+1. Abra o teste e2e: `submissao-proposta-simples.cy.ts`.
+2. Neste teste resolva a solicitação abaixo:
+
+## Teste de Submissão de Proposta
+
+### Solicitação:
+
+1. A partir do Edital Simples criado com status "em Andamento" (visualizado na Home do sistema: Seção `Editais`), crie um teste de submissão da proposta. 
+2. O teste Cypress deve entrar na área de criação da proposta, preenchendo todos os campos da Proposta e então realizando a submissão da proposta.
+
+**Resultado esperado:**
+
+Após a realização do Teste Cypress se espera que a Proposta tenha sido criada com sucesso e apareça na Home do sistema: Seção `Propostas`.
+
+### Passo a passo:
+
+1. Abra o arquivo `submissao-proposta-simples.cy.ts` e edite `[URL do sistema]`, `[E-mail do usuário]` e `[Senha do usuário]` estes dados serão informados pelo Professor.
+2. Edite o comando da `linha 15` alterando para clicar no seu edital simples criado.
+> Obs: Recomendamos extrair elementos utilizando a ferramenta [Seletor Playground Cypress](https://www.youtube.com/watch?v=LmxU-a3J3bk&ab_channel=QAACTION)
+3. Siga o fluxo, extraindo os elementos para preencher todos os campos da Proposta.
+
+---
+
+## Atividade 4 - Realizar o Teste de Submissão de Proposta do E.M. (Edital Médio)
+
+1. Crie o teste e2e: `submissao-proposta-medio.cy.ts`.
+2. Neste teste resolva a solicitação abaixo:
+
+## Teste de Submissão de Proposta
+
+### Solicitação:
+
+1. A partir do Edital Médio criado com status "em Andamento" (visualizado na Home do sistema: Seção `Editais`), crie um teste de submissão da proposta. 
+2. O teste Cypress deve entrar na área de criação da proposta, preenchendo todos os campos da Proposta e então realizando a submissão da proposta.
+
+**Resultado esperado:**
+
+Após a realização do Teste Cypress se espera que a Proposta tenha sido criada com sucesso e apareça na Home do sistema: Seção `Propostas`.
+
+---
+
+## Atividade 5 - Realizar o Teste de Submissão de Proposta do E.C. (Edital Completo)
+
+1. Crie o teste e2e: `submissao-proposta-completo.cy.ts`.
+2. Neste teste resolva a solicitação abaixo:
+
+## Teste de Submissão de Proposta
+
+### Solicitação:
+
+1. A partir do Edital Completo criado com status "em Andamento" (visualizado na Home do sistema: Seção `Editais`), crie um teste de submissão da proposta. 
+2. O teste Cypress deve entrar na área de criação da proposta, preenchendo todos os campos da Proposta e então realizando a submissão da proposta.
+
+**Resultado esperado:**
+
+Após a realização do Teste Cypress se espera que a Proposta tenha sido criada com sucesso e apareça na Home do sistema: Seção `Propostas`.
+
+---
+
+# Entregas
+
+1. O Aluno/Grupo deve entregar os arquivos `edital-medio.cy.ts` e `edital-completo.cy.ts` e demais arquivos complementares<u>, se houverem,</u> dentro de suas respectivas pastas, em sua Fork de desenvolvimento.
+
+
