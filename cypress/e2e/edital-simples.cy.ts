@@ -5,9 +5,9 @@ describe('Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas', 
     // Gancho em nível raíz
     // executa antes de realizar cada teste(it)
     cy.typelogin(
-      '[URL do sistema]',// [URL do sistema]
-      '[E-mail do usuário]', // [E-mail do usuário]
-      '[Senha do usuário]', // [Senha do usuário]
+      'https://novo-sig.ledes.net/',// [URL do sistema]
+      'grupo5_gestor@sig.com', // [E-mail do usuário]
+      'Grupo5@sig', // [Senha do usuário]
     ); //Acessa a página de login usando as credenciais do usuário e senha.
   });
   it.only('Realiza login no sistema e cria um edital simples', () => { //Teste edital simples, se houver mais de um teste, o it.only executa apenas esse teste.
@@ -15,7 +15,7 @@ describe('Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas', 
     cy.get('[data-cy="nav-item-publicar-edital"]').click(); //Clica na opção Editais para acessar da página de Editais
     cy.get('[data-cy="add-publicar-edital"]').click(); //Clica no botão "Adicionar" para criação de um novo Edital
     cy.get('[data-cy="nome"]').type(
-      'Grupo-01 E.S. 005/2025 joão-neves', //Edite essa linha para preencher o nome do Edital
+      'Grupo-05 E.S. 001/2025 lucas-marques', //Edite essa linha para preencher o nome do Edital
       { delay: 0 },
     ); //Preenche o campo "Nome" do Edital
     cy.get('[data-cy="restricoes"]').click(); //Clica na aba Restrições para seguir para a página de Restrições

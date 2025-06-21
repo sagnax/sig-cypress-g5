@@ -25,5 +25,5 @@ export const getCurrentDateTime = ({
   const date = now.toLocaleDateString('pt-BR'); // "08/05/2025"
   const time = now.toLocaleTimeString('pt-BR', { hour12: false }); // "16:30:09"
   const [hh, mm, ss] = time.split(':');
-  return `${date} ${mm}.${ss}.${hh}`;
+  return `${date} ${mm}:${ss}:${hh}`;
 };

@@ -1,0 +1,17 @@
+{
+  "titulo_projeto": "Grupo-05 E.M. 001/2025 lucas-marques",
+  
+  "duracao_projeto_meses": "6",
+  
+  "termo_de_aceite": "Este é um edital de teste para o projeto de médio porte.",
+  "texto_do_edital": "Lorem",
+  
+  "periodo_de_submissao_inicio": "01/01/2025 00:00:00",
+  "periodo_de_submissao_fim": "01/01/2026 00:00:00",
+
+  "programa_index_id": "programaId-item-0",
+
+  "indicador_producao1": "producao-bibliog",
+  "indicador_producao2": "producao-cultura",
+  "indicador_producao3": "producao-tecnica"
+}

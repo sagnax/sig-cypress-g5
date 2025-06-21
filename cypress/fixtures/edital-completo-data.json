@@ -1,0 +1,80 @@
+{
+  "titulo_projeto": "Grupo-05 E.C. 001/2025 lucas-marques",
+  
+  "duracao_projeto_meses": "6",
+  
+  "termo_de_aceite": "Este é um edital de teste para o projeto de médio porte.",
+  "texto_do_edital": "Lorem",
+  
+  "periodo_de_submissao_inicio": "01/01/2025 00:00:00",
+  "periodo_de_submissao_fim": "01/01/2026 00:00:00",
+
+  "orcamento_programa": "streich-torp-and",
+
+  "informacao_complementar1": "areas-tematicas",
+  "informacao_complementar2": "data-de-realizac",
+  "informacao_complementar3": "ocupacao-da-equi",
+  "informacao_complementar4": "objetivos-de-des",
+  "informacao_complementar5": "porte-da-empresa",
+
+  "rubrica_tipo1": "diarias",
+
+  "rubrica_natureza1": "custeio",
+
+  "nome_faixa_financiamento1": "faixa-1",
+  "valor_minimo_faixa_financiamento1": "1000",
+  "valor_maximo_faixa_financiamento1": "5000",
+  "observacao_faixa_financiamento1": "Observação para a faixa 1",
+  "nome_faixa_financiamento2": "faixa-2",
+  "valor_minimo_faixa_financiamento2": "5001",
+  "valor_maximo_faixa_financiamento2": "10000",
+  "observacao_faixa_financiamento2": "Observação para a faixa 2",
+  "nome_faixa_financiamento3": "faixa-3",
+  "valor_minimo_faixa_financiamento3": "10001",
+  "valor_maximo_faixa_financiamento3": "20000",
+  "observacao_faixa_financiamento3": "Observação para a faixa 3",
+  "nome_faixa_financiamento4": "faixa-4",
+  "valor_minimo_faixa_financiamento4": "20001",
+  "valor_maximo_faixa_financiamento4": "50000",
+  "observacao_faixa_financiamento4": "Observação para a faixa 4",
+  "nome_faixa_financiamento5": "faixa-5",
+  "valor_minimo_faixa_financiamento5": "50001",
+  "valor_maximo_faixa_financiamento5": "100000",
+  "observacao_faixa_financiamento5": "Observação para a faixa 5",
+
+  "documento_proposta_nome1": "documento-proposta-1",
+  "documento_proposta_descricao1": "Descrição do documento 1",
+  "documento_proposta_formato1": "pdf",
+  "documento_proposta_tamanho1": "5MB",
+  "documento_proposta_nome2": "documento-proposta-2",
+  "documento_proposta_descricao2": "Descrição do documento 2",
+  "documento_proposta_formato2": "doc",
+  "documento_proposta_tamanho2": "10MB",
+
+  "documento_pessoal1": "rg",
+  "documento_pessoal2": "cpf",
+  "documento_pessoal3": "comprovante-de-r",
+  "documento_pessoal4": "titulo-de-eleito",
+  "documento_pessoal5": "passaporte",
+
+  "descricao_projeto1": "objetivos-especi",
+  "descricao_projeto2": "metodologia",
+  "descricao_projeto3": "resumo-da-propos",
+  "descricao_projeto4": "sintese-do-proje",
+  "descricao_projeto5": "objetivo-geral",
+  
+  "indicador_producao1": "producao-bibliog",
+  "indicador_producao2": "producao-cultura",
+  "indicador_producao3": "producao-tecnica",
+
+  "modalidade_bolsa1": "at",
+  "nivel_bolsa1": "nm-r-560-00",
+  "modalidade_bolsa2": "at",
+  "nivel_bolsa2": "ns-r-770-00",
+  "modalidade_bolsa3": "dti-cn-pq",
+  "nivel_bolsa3": "a-0-h-r-880-00",  
+  "modalidade_bolsa4": "dti-cn-pq",
+  "nivel_bolsa4": "b-0-h-r-670-00",
+  "modalidade_bolsa5": "dti-cn-pq",
+  "nivel_bolsa5": "c-0-h-r-240-00"
+}
