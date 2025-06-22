@@ -1,4 +1,4 @@
 .DS_Store
 node_modules/
 
-#fixtures/login-data.json
+fixtures/login-data.json
