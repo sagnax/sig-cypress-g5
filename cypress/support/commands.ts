@@ -1,6 +1,7 @@
 // cypress/support/commands.ts
 
 Cypress.Commands.add('typelogin', (url, username, password) => {
+  // Pré-condição: Realiza o login no sistema antes de cada teste
   cy.visit(url);
   cy.intercept('POST', '/login').as('loginRequest');
 
@@ -18,6 +19,10 @@ Cypress.Commands.add('typelogin', (url, username, password) => {
     .should('be.visible')
     .should('not.be.disabled')
     .click();
+
+  cy.wait("@loginRequest").its("response.statusCode").should("eq", 201);
+  
+  cy.url().should("include", "/editar-perfil"); // Confirma que o login foi bem-sucedido
 });
 
 Cypress.Commands.add('typeInCKEditor', (selector: string, content: string) => {
@@ -31,16 +36,6 @@ Cypress.Commands.add('typeInCKEditor', (selector: string, content: string) => {
     }
   });
 });
-
-Cypress.Commands.add('selectInputOption', (selector: string, optionItem:string) => {
-  cy.get(`[data-cy="${selector}"]`)
-    .should("be.visible")
-    .click();
-  cy.wait(50);
-  cy.get(`[data-cy="${optionItem}"]`)
-    .click();
-  cy.wait(250) 
-})
 
 Cypress.Commands.add('selectMuiOptionByText', (selectDataCy: string, optionText: string) => {
   cy.get(`[data-cy="${selectDataCy}"]`).click();
