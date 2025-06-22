@@ -15,7 +15,7 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
   //   cy.title().should('eq', 'SigFap');
   // })
 
-  it("Realiza login no sistema e cria um edital médio", () => {
+  it("Realiza login no sistema e cria um edital completo", () => {
     cy.wait("@loginRequest").its("response.statusCode").should("eq", 201);
     // verifica a url após logado
     cy.url().should("include", "/editar-perfil");
@@ -30,7 +30,7 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Clica no botão para adicionar um novo edital
     cy.get('[data-cy="add-publicar-edital"]').should("be.visible").click();
 
-    // Preenche os campos do edital médio
+    // Preenche os campos do edital completo
     // Nome do edital
     cy.get('[data-cy="nome"]')
       .as("nomeEditalInput")

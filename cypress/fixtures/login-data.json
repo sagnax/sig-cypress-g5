@@ -1,9 +1,9 @@
 {
   "url_sistema": "https://novo-sig.ledes.net/",
   
-  "usuario": "",
-  "senha": "",
+  "usuario": "grupo5_gestor@sig.com",
+  "senha": "Grupo5@sig",
 
-  "usuario_pesquisador": "",
-  "senha_pesquisador": "" 
+  "usuario_pesquisador": "grupo5_pesq@sig.com",
+  "senha_pesquisador": "Grupo5@sig" 
 }

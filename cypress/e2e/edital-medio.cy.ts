@@ -63,6 +63,10 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="estado-sao-paulo"]')
       .should("be.visible")
       .should("have.css", "background-color", "rgb(255, 255, 255)");
+    cy.get('[data-cy="estado-mato-grosso"]')
+      .should("be.visible")
+      .click()
+      .should("have.css", "background-color", "rgb(255, 255, 255)");
     cy.get('[data-cy="estado-mato-grosso-do-s"]')
       .should("be.visible")
       .click()

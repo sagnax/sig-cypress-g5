@@ -83,5 +83,9 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="termo-de-aceite"]').should("be.visible").click();
     cy.get('[data-cy="termoDeAceiteAceito"]').check().should("be.checked");
 
+    // Finalizar a proposta
+    cy.get('[data-cy="menu-verificar-penden"]').should("be.visible").click();
+    cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+
   });
 });

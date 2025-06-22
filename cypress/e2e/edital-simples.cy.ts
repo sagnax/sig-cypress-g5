@@ -17,7 +17,7 @@ describe('Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas', 
     cy.get('[data-cy="nome"]').type('Grupo-05 E.S. 005/2025 lucas-marques', { delay: 0 }); //Preenche o campo "Nome" do Edital
     cy.get('[data-cy="restricoes"]').click(); //Clica na aba Restrições para seguir para a página de Restrições
     cy.get('[data-cy="definirDuracaoProjetoEmMeses"]').check(); //Marca a opção "Definir Duração do Projeto em Meses"
-    cy.get('[data-cy="duracaoProjetoEmMeses"]').type('6'); //Preenche o campo "Duração do Projeto em Meses com o valor 6"
+    cy.get('[data-cy="duracaoProjetoEmMeses"]').type('12'); //Preenche o campo "Duração do Projeto em Meses com o valor 6"
     cy.get('[data-cy="pesquisadorSubmeterVariasPropostas"]').check(); //Marca a opção "Pesquisador pode submeter várias propostas"
     cy.get('[data-cy="cronograma"]').click(); //Clica na aba Cronograma para seguir para a página de Cronograma
     cy.get('[data-cy="periodo-de-submissao"]').click(); //Clica na aba Período de Submissão para seguir para a página de Período de Submissão
