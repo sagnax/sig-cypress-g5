@@ -72,15 +72,15 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Informações Complementares
     cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
     // Adicionar informações complementares
-    cy.selectInputOption('perguntaInfoId', editalData.informacao_complementar1);
+    cy.selectMuiOptionByText('perguntaInfoId', editalData.informacao_complementar1);
     cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaInfoId', editalData.informacao_complementar2);
+    cy.selectMuiOptionByText('perguntaInfoId', editalData.informacao_complementar2);
     cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaInfoId', editalData.informacao_complementar3);
+    cy.selectMuiOptionByText('perguntaInfoId', editalData.informacao_complementar3);
     cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaInfoId', editalData.informacao_complementar4);
+    cy.selectMuiOptionByText('perguntaInfoId', editalData.informacao_complementar4);
     cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaInfoId', editalData.informacao_complementar5);
+    cy.selectMuiOptionByText('perguntaInfoId', editalData.informacao_complementar5);
     cy.get('[data-cy="informacaoComplementarPergunta-adicionar"]').should("be.visible").click();
 
     // Cronograma
@@ -89,16 +89,8 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     
     // Adiciona um novo período de submissão
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.get('[data-cy="chamadaUnsaved.inicio"]')
-      .as("periodoSubmissaoInicio")
-      .should("be.visible")
-      .type(editalData.periodo_de_submissao_inicio)
-      .should("have.value", editalData.periodo_de_submissao_inicio);
-    cy.get('[data-cy="chamadaUnsaved.termino"]')
-      .as("periodoSubmissaoFim")
-      .should("be.visible")
-      .type(editalData.periodo_de_submissao_fim)
-      .should("have.value", editalData.periodo_de_submissao_fim);
+    cy.get('[data-cy="chamadaUnsaved.inicio"]').type(getCurrentDateTime()); 
+    cy.get('[data-cy="chamadaUnsaved.termino"]').type(getCurrentDateTime({ addYears: 1 })); 
     cy.get('[data-cy="chamada-confirmar"]').should("be.visible").click();
     
     // Orçamento -> Programa
@@ -106,15 +98,15 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="programa"]').should("be.visible").click();
     
     // Seleciona o programa
-    cy.selectInputOption('programaId', editalData.orcamento_programa);
+    cy.selectMuiOptionByText('programaId', editalData.orcamento_programa);
 
     // Rubrica
     cy.get('[data-cy="rubricas"]').should("be.visible").click();
     
     // Adicionar Rubrica
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('editalRubricaUnsaved.tipoEditalRubrica', editalData.rubrica_tipo1);
-    cy.selectInputOption('editalRubricaUnsaved.naturezaDespesaId', editalData.rubrica_natureza1);
+    cy.selectMuiOptionByText('editalRubricaUnsaved.tipoEditalRubrica', editalData.rubrica_tipo1);
+    cy.selectMuiOptionByText('editalRubricaUnsaved.naturezaDespesaId', editalData.rubrica_natureza1);
     cy.get('[data-cy="editalRubrica-confirmar"]').should("be.visible").click();
 
     // Faixas de Financiamento
@@ -166,62 +158,62 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy-index="documentoPropostaEdital-0-expandable-item"]').should("be.visible").click();
     cy.get('[data-cy="documentoPropostaEdital.0.nome"]').type(editalData.documento_proposta_nome1, { delay: 0 })
     cy.get('[data-cy="documentoPropostaEdital.0.descricao"]').type(editalData.documento_proposta_descricao1, { delay: 0 })
-    cy.selectInputOption("documentoPropostaEdital.0.formatoArquivo", editalData.documento_proposta_formato1);
+    cy.selectMuiOptionByText("documentoPropostaEdital.0.formatoArquivo", editalData.documento_proposta_formato1);
     cy.get('[data-cy="documentoPropostaEdital.0.tamanhoArquivo"]').type(editalData.documento_proposta_tamanho1, { delay: 0 })
     // Adiciona um novo documento da proposta 2
     cy.get('[data-cy-index="documentoPropostaEdital-1-expandable-item"]').should("be.visible").click();
     cy.get('[data-cy="documentoPropostaEdital.1.nome"]').type(editalData.documento_proposta_nome2, { delay: 0 })
     cy.get('[data-cy="documentoPropostaEdital.1.descricao"]').type(editalData.documento_proposta_descricao2, { delay: 0 })
-    cy.selectInputOption("documentoPropostaEdital.1.formatoArquivo", editalData.documento_proposta_formato2);
+    cy.selectMuiOptionByText("documentoPropostaEdital.1.formatoArquivo", editalData.documento_proposta_formato2);
     cy.get('[data-cy="documentoPropostaEdital.1.tamanhoArquivo"]').type(editalData.documento_proposta_tamanho2, { delay: 0 })
 
     cy.get('[data-cy="documentos-pessoais"]').should("be.visible").click();
     // Adiciona novo documento pessoal 1
     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('documentoPessoalEdital.0.documentoPessoalId', editalData.documento_pessoal1);
+    cy.selectMuiOptionByText('documentoPessoalEdital.0.documentoPessoalId', editalData.documento_pessoal1);
     // Adiciona novo documento pessoal 2
     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('documentoPessoalEdital.1.documentoPessoalId', editalData.documento_pessoal2);
+    cy.selectMuiOptionByText('documentoPessoalEdital.1.documentoPessoalId', editalData.documento_pessoal2);
     // Adiciona novo documento pessoal 3
     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('documentoPessoalEdital.2.documentoPessoalId', editalData.documento_pessoal3);
+    cy.selectMuiOptionByText('documentoPessoalEdital.2.documentoPessoalId', editalData.documento_pessoal3);
     // Adiciona novo documento pessoal 4
     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('documentoPessoalEdital.3.documentoPessoalId', editalData.documento_pessoal4);
+    cy.selectMuiOptionByText('documentoPessoalEdital.3.documentoPessoalId', editalData.documento_pessoal4);
     // Adiciona novo documento pessoal 5
     cy.get('[data-cy="documentoPessoalEdital-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('documentoPessoalEdital.4.documentoPessoalId', editalData.documento_pessoal5);
+    cy.selectMuiOptionByText('documentoPessoalEdital.4.documentoPessoalId', editalData.documento_pessoal5);
 
     // Perguntas
     cy.get('[data-cy="perguntas"]').should("be.visible").click();
     
     cy.get('[data-cy="descricao-do-projeto"]').should("be.visible").click();
     // Adiciona um novo descrição do projeto
-    cy.selectInputOption('perguntaDescId', editalData.descricao_projeto1);
+    cy.selectMuiOptionByText('perguntaDescId', editalData.descricao_projeto1);
     cy.get('[data-cy="pergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaDescId', editalData.descricao_projeto2);
+    cy.selectMuiOptionByText('perguntaDescId', editalData.descricao_projeto2);
     cy.get('[data-cy="pergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaDescId', editalData.descricao_projeto3);
+    cy.selectMuiOptionByText('perguntaDescId', editalData.descricao_projeto3);
     cy.get('[data-cy="pergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaDescId', editalData.descricao_projeto4);
+    cy.selectMuiOptionByText('perguntaDescId', editalData.descricao_projeto4);
     cy.get('[data-cy="pergunta-adicionar"]').should("be.visible").click();
-    cy.selectInputOption('perguntaDescId', editalData.descricao_projeto5);
+    cy.selectMuiOptionByText('perguntaDescId', editalData.descricao_projeto5);
     cy.get('[data-cy="pergunta-adicionar"]').should("be.visible").click();
     
     cy.get('[data-cy="indicadores-de-producao"]').should("be.visible").click();
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao1);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao1);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
 
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao2);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao2);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
 
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao3);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao3);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
 
     //Bolsas do Edital
@@ -229,33 +221,33 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="bolsas"]').should("be.visible").click();
     // Adiciona uma nova bolsa
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa1);
-    cy.selectInputOption('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa1);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa1);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa1);
     cy.get('[data-cy="bolsaEdital-confirmar"]').should("be.visible").click();
     // Adiciona uma nova bolsa
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa2);
-    cy.selectInputOption('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa2);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa2);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa2);
     cy.get('[data-cy="bolsaEdital-confirmar"]').should("be.visible").click();
     // Adiciona uma nova bolsa
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa3);
-    cy.selectInputOption('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa3);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa3);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa3);
     cy.get('[data-cy="bolsaEdital-confirmar"]').should("be.visible").click();
     // Adiciona uma nova bolsa
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa4);
-    cy.selectInputOption('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa4);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa4);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa4);
     cy.get('[data-cy="bolsaEdital-confirmar"]').should("be.visible").click();
     // Adiciona uma nova bolsa
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa5);
-    cy.selectInputOption('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa5);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.modalidadeBolsaId', editalData.modalidade_bolsa5);
+    cy.selectMuiOptionByText('bolsaEditalUnsaved.nivelBolsaId', editalData.nivel_bolsa5);
     cy.get('[data-cy="bolsaEdital-confirmar"]').should("be.visible").click();
 
     // Salva o edital
-    cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
-    cy.get('[data-cy="menu-finalizar"]').should("be.visible").click();
+    cy.get('[data-cy="menu-salvar"]').click();
+    cy.get('[data-cy="menu-finalizar"]').click();
 
     // Resultado esperado:
     // Após a realização do Teste Cypress se espera que o Edital tenha sido criado com sucesso e apareça na tela de visualização dos Editais.

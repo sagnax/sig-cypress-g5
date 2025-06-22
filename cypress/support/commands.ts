@@ -48,4 +48,6 @@ Cypress.Commands.add('selectMuiOptionByText', (selectDataCy: string, optionText:
   cy.get('[role="listbox"]').should('be.visible');
 
   cy.get('[role="listbox"]').contains('li', optionText).click();
+
+  cy.wait(250); // Aguarda a atualização do componente
 });

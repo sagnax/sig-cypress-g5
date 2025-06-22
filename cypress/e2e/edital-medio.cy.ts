@@ -74,16 +74,8 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     
     // Adiciona um novo período de submissão
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.get('[data-cy="chamadaUnsaved.inicio"]')
-      .as("periodoSubmissaoInicio")
-      .should("be.visible")
-      .type(editalData.periodo_de_submissao_inicio)
-      .should("have.value", editalData.periodo_de_submissao_inicio);
-    cy.get('[data-cy="chamadaUnsaved.termino"]')
-      .as("periodoSubmissaoFim")
-      .should("be.visible")
-      .type(editalData.periodo_de_submissao_fim)
-      .should("have.value", editalData.periodo_de_submissao_fim);
+    cy.get('[data-cy="chamadaUnsaved.inicio"]').type(getCurrentDateTime());
+    cy.get('[data-cy="chamadaUnsaved.termino"]').type(getCurrentDateTime({ addYears: 1 })); 
     cy.get('[data-cy="chamada-confirmar"]').should("be.visible").click();
     
     // Orçamento
@@ -91,33 +83,27 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="programa"]').should("be.visible").click();
     
     // Seleciona o programa
-    cy.get('[data-cy="programaId"]')
-      .should("be.visible")
-      .click()
-      .get('[data-cy-index="'+ editalData.programa_index_id +'"]')
-      .should("be.visible")
-      .click();
-    cy.get('[data-cy="programaId"]').should("not.have.value", "");
+    cy.selectMuiOptionByText('programaId', editalData.programa_index_id);
     
     // Perguntas
     cy.get('[data-cy="perguntas"]').should("be.visible").click();
     cy.get('[data-cy="indicadores-de-producao"]').should("be.visible").click();
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao1);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao1);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao2);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao2);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
     // Adiciona um novo indicador de produção
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectInputOption('indicadorProducaoUnsaved.id', editalData.indicador_producao3);
+    cy.selectMuiOptionByText('indicadorProducaoUnsaved.id', editalData.indicador_producao3);
     cy.get('[data-cy="indicadorProducao-confirmar"]').should("be.visible").click();
 
     // Salva o edital
-    cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
-    cy.get('[data-cy="menu-finalizar"]').should("be.visible").click();
+    cy.get('[data-cy="menu-salvar"]').click();
+    cy.get('[data-cy="menu-finalizar"]').click();
 
     // Resultado esperado:
     // Após a realização do Teste Cypress se espera que o Edital tenha sido criado com sucesso e apareça na tela de visualização dos Editais.

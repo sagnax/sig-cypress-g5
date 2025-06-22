@@ -1,7 +1,7 @@
 {
-  "titulo_projeto": "Grupo-05 E.C. 001/2025 lucas-marques",
+  "titulo_projeto": "Grupo-05 E.C. 005/2025 lucas-marques",
   
-  "duracao_projeto_meses": "6",
+  "duracao_projeto_meses": "12",
   
   "termo_de_aceite": "Este é um edital de teste para o projeto de médio porte.",
   "texto_do_edital": "Lorem",
@@ -9,17 +9,16 @@
   "periodo_de_submissao_inicio": "01/01/2025 00:00:00",
   "periodo_de_submissao_fim": "01/01/2026 00:00:00",
 
-  "orcamento_programa": "streich-torp-and",
+  "orcamento_programa": "Streich, Torp and Bergnaum",
 
-  "informacao_complementar1": "areas-tematicas",
-  "informacao_complementar2": "data-de-realizac",
-  "informacao_complementar3": "ocupacao-da-equi",
-  "informacao_complementar4": "objetivos-de-des",
-  "informacao_complementar5": "porte-da-empresa",
+  "informacao_complementar1": "ÁREAS TEMÁTICAS",
+  "informacao_complementar2": "Data de realização",
+  "informacao_complementar3": "Ocupação da equipe",
+  "informacao_complementar4": "Objetivos de Desenvolvimento",
+  "informacao_complementar5": "Porte da Empresa",
 
-  "rubrica_tipo1": "diarias",
-
-  "rubrica_natureza1": "custeio",
+  "rubrica_tipo1": "Diárias",
+  "rubrica_natureza1": "Custeio",
 
   "nome_faixa_financiamento1": "faixa-1",
   "valor_minimo_faixa_financiamento1": "1000",
@@ -44,37 +43,37 @@
 
   "documento_proposta_nome1": "documento-proposta-1",
   "documento_proposta_descricao1": "Descrição do documento 1",
-  "documento_proposta_formato1": "pdf",
+  "documento_proposta_formato1": "PDF",
   "documento_proposta_tamanho1": "5MB",
   "documento_proposta_nome2": "documento-proposta-2",
   "documento_proposta_descricao2": "Descrição do documento 2",
-  "documento_proposta_formato2": "doc",
+  "documento_proposta_formato2": "DOC",
   "documento_proposta_tamanho2": "10MB",
 
-  "documento_pessoal1": "rg",
-  "documento_pessoal2": "cpf",
-  "documento_pessoal3": "comprovante-de-r",
-  "documento_pessoal4": "titulo-de-eleito",
-  "documento_pessoal5": "passaporte",
+  "documento_pessoal1": "RG",
+  "documento_pessoal2": "CPF",
+  "documento_pessoal3": "Comprovante",
+  "documento_pessoal4": "Título",
+  "documento_pessoal5": "Passaporte",
 
-  "descricao_projeto1": "objetivos-especi",
-  "descricao_projeto2": "metodologia",
-  "descricao_projeto3": "resumo-da-propos",
-  "descricao_projeto4": "sintese-do-proje",
-  "descricao_projeto5": "objetivo-geral",
+  "descricao_projeto1": "Objetivos Específicos",
+  "descricao_projeto2": "Metodologia",
+  "descricao_projeto3": "Resumo da Proposta",
+  "descricao_projeto4": "Síntese do Projeto",
+  "descricao_projeto5": "Objetivo Geral",
   
-  "indicador_producao1": "producao-bibliog",
-  "indicador_producao2": "producao-cultura",
-  "indicador_producao3": "producao-tecnica",
+  "indicador_producao1": "Produção Bibliográfica",
+  "indicador_producao2": "Produção Cultural",
+  "indicador_producao3": "Produção Técnica ou Tecnológica",
 
-  "modalidade_bolsa1": "at",
-  "nivel_bolsa1": "nm-r-560-00",
-  "modalidade_bolsa2": "at",
-  "nivel_bolsa2": "ns-r-770-00",
-  "modalidade_bolsa3": "dti-cn-pq",
-  "nivel_bolsa3": "a-0-h-r-880-00",  
-  "modalidade_bolsa4": "dti-cn-pq",
-  "nivel_bolsa4": "b-0-h-r-670-00",
-  "modalidade_bolsa5": "dti-cn-pq",
-  "nivel_bolsa5": "c-0-h-r-240-00"
+  "modalidade_bolsa1": "AT",
+  "nivel_bolsa1": "NM R$ 560,00)",
+  "modalidade_bolsa2": "AT",
+  "nivel_bolsa2": "NS R$ 770,00)",
+  "modalidade_bolsa3": "DTI-CNPq",
+  "nivel_bolsa3": "A (0H - R$ 880,00)",  
+  "modalidade_bolsa4": "DTI-CNPq",
+  "nivel_bolsa4": "B (0H - R$ 670,00)",
+  "modalidade_bolsa5": "DTI-CNPq",
+  "nivel_bolsa5": "C (0H - R$ 240,00)"
 }
