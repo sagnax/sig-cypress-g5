@@ -11,14 +11,14 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     ); //Acessa a página de login usando as credenciais do usuário e senha.
   });
 
-  it("Realiza login no sistema e submete uma proposta para um Edital Simples", () => {
+  it("Realiza login no sistema e submete uma proposta para um Edital Médio", () => {
     // Navega para a página inicial
     cy.get('[data-cy="breadcrumb-home"]').click();
     // Navega para a pagina de ver mais editais
     cy.get('[data-cy="editais-ver-mais"]').click();
 
     // Pesquisa pelo edital
-    cy.get(".MuiInputBase-input").type("Grupo-05 E.S. 005/2025 lucas-marques");
+    cy.get(".MuiInputBase-input").type("Grupo-05 E.M. 001/2025 lucas-marques");
     // Visualiza o primeiro edital encontrado
     cy.get(':nth-child(1) > .MuiListItem-root > .e1w0rc4q5 > .e1w0rc4q2 > .MuiButtonBase-root').click();
 
@@ -78,6 +78,8 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
 
     // Apresentação
     cy.get('[data-cy="apresentacao"]').should("be.visible").click();
+    // Indicadores de Produção
+    cy.get('[data-cy="indicadores-de-producao"]').should("be.visible").click();
     // Membros
     cy.get('[data-cy="membros"]').should("be.visible").click();
     // Atividades

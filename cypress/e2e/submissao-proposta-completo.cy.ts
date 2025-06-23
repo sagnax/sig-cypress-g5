@@ -1,4 +1,5 @@
 import * as loginData from "../fixtures/login-data.json";
+import { getCurrentDateTime } from "../helpers/date.helper";
 
 describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", () => {
   beforeEach(() => {
@@ -11,14 +12,14 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     ); //Acessa a página de login usando as credenciais do usuário e senha.
   });
 
-  it("Realiza login no sistema e submete uma proposta para um Edital Simples", () => {
+  it("Realiza login no sistema e submete uma proposta para um Edital Completo", () => {
     // Navega para a página inicial
     cy.get('[data-cy="breadcrumb-home"]').click();
     // Navega para a pagina de ver mais editais
     cy.get('[data-cy="editais-ver-mais"]').click();
 
     // Pesquisa pelo edital
-    cy.get(".MuiInputBase-input").type("Grupo-05 E.S. 005/2025 lucas-marques");
+    cy.get(".MuiInputBase-input").type("Grupo-05 E.C. 001/2025 lucas-marques");
     // Visualiza o primeiro edital encontrado
     cy.get(':nth-child(1) > .MuiListItem-root > .e1w0rc4q5 > .e1w0rc4q2 > .MuiButtonBase-root').click();
 
@@ -40,6 +41,13 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("areaDeConhecimento.0.areaId", "Ciência da Computação");
     cy.selectMuiOptionByText("areaDeConhecimento.0.subAreaId", "Sistemas de Computação");
     cy.selectMuiOptionByText("areaDeConhecimento.0.especialidadeId", "Arquitetura de Sistemas de Computação");
+    // Informações Complementares
+    cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-energias-renovav"]').click();
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-26"]').clear().type("30/07/2025",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-27"]').clear().type("Lorem Ipsum Dolor Met",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-23-item-ods01-erradicar"]').click();
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-24-item-grande-faturamen"]').click();
     // Abrangência
     cy.get('[data-cy="abrangencia"]').should("be.visible").click();
     // Preenchendo os campos de abrangência
@@ -78,10 +86,36 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
 
     // Apresentação
     cy.get('[data-cy="apresentacao"]').should("be.visible").click();
+    // Descrição
+    cy.get('[data-cy="descricao"]').should("be.visible").click();
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-6"]').clear().type("Objetivos do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-7"]').clear().type("Metodologia do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-3"]').clear().type("Resumo do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-4"]').clear().type("Sintese do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-5"]').clear().type("Objetivo Geral do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    // Indicadores de Produção
+    cy.get('[data-cy="indicadores-de-producao"]').should("be.visible").click();
     // Membros
     cy.get('[data-cy="membros"]').should("be.visible").click();
     // Atividades
     cy.get('[data-cy="atividades"]').should("be.visible").click();
+
+    // Orçamento
+    cy.get('[data-cy="orcamento"]').should("be.visible").click();
+    // Faixa de Financiamento
+    cy.get('[data-cy="faixa-de-financiamento"]').should("be.visible").click();
+    cy.selectMuiOptionByText("faixaFinanciamentoId", "faixa-1");
+    cy.get('[data-cy="diarias"]').should("be.visible").click();
+    cy.get('[data-cy="add-button"]').should("be.visible").click();
+    cy.selectMuiOptionByText("rubricaDiariaUnsaved.paisId", "Brasil");
+    cy.selectMuiOptionByText("rubricaDiariaUnsaved.estadoId", "São Paulo");
+    cy.selectMuiOptionByText("rubricaDiariaUnsaved.municipio", "Adamantina");
+    cy.get('[data-cy="rubricaDiariaUnsaved.numeroDiaria"]').clear().type("10",{ delay: 0 });
+    cy.get('[data-cy="rubricaDiariaUnsaved.custoUnitario"]').clear().type("100",{ delay: 0 });
+    cy.selectMuiOptionByText("rubricaDiariaUnsaved.mesPrevisto", "1");
+    cy.get('[data-cy="rubricaDiariaUnsaved.justificativa"]').clear().type("Justificativa para as diárias",{ delay: 0 });
+    cy.get('[data-cy="rubricaDiaria-confirmar"]').click();
+
 
     // Termos
     cy.get('[data-cy="termos"]').should("be.visible").click();
