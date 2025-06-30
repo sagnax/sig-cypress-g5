@@ -24,5 +24,8 @@ declare namespace Cypress{
          * @returns The Cypress chainable object for further chaining.
          */
         selectMuiOptionByText(selectDataCy: string, optionText: string): Chainable<void>;
+
+
+        selectMuiOptionByTextAddress(selectDataCy: string, optionText: string): Chainable<void>;
     }
 }

@@ -19,7 +19,7 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="editais-ver-mais"]').click();
 
     // Pesquisa pelo edital
-    cy.get(".MuiInputBase-input").type("Grupo-05 E.C. 001/2025 lucas-marques");
+    cy.get(".MuiInputBase-input").type("Grupo-05 E.C. 005/2025 lucas-marques");
     // Visualiza o primeiro edital encontrado
     cy.get(':nth-child(1) > .MuiListItem-root > .e1w0rc4q5 > .e1w0rc4q2 > .MuiButtonBase-root').click();
 
@@ -107,8 +107,11 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("faixaFinanciamentoId", "faixa-1");
     cy.get('[data-cy="diarias"]').should("be.visible").click();
     cy.get('[data-cy="add-button"]').should("be.visible").click();
-    cy.selectMuiOptionByText("rubricaDiariaUnsaved.paisId", "Brasil");
-    cy.selectMuiOptionByText("rubricaDiariaUnsaved.estadoId", "São Paulo");
+    cy.selectMuiOptionByTextAddress("rubricaDiariaUnsaved.paisId", "Brasil");
+
+    cy.wait(3000);
+
+    cy.selectMuiOptionByTextAddress("rubricaDiariaUnsaved.estadoId", "São Paulo");
     cy.selectMuiOptionByText("rubricaDiariaUnsaved.municipio", "Adamantina");
     cy.get('[data-cy="rubricaDiariaUnsaved.numeroDiaria"]').clear().type("10",{ delay: 0 });
     cy.get('[data-cy="rubricaDiariaUnsaved.custoUnitario"]').clear().type("100",{ delay: 0 });

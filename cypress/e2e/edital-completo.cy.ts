@@ -70,7 +70,7 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Adiciona novo período de submissão
     cy.get('[data-cy="add-button"]').should("be.visible").click();
     cy.get('[data-cy="chamadaUnsaved.inicio"]').type(getCurrentDateTime()); 
-    cy.get('[data-cy="chamadaUnsaved.termino"]').type(getCurrentDateTime({ addYears: 1 })); 
+    cy.get('[data-cy="chamadaUnsaved.termino"]').type(getCurrentDateTime({ addDays: 5 })); 
     cy.get('[data-cy="chamada-confirmar"]').should("be.visible").click();
     
     // Passo 5 - Step 3: Orçamento (US-19)
