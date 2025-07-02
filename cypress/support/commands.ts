@@ -47,6 +47,7 @@ Cypress.Commands.add('typeInCKEditor', (selector: string, content: string) => {
 
 // Adiciona um comando customizado para selecionar uma opção em um componente MUI Select pelo texto
 Cypress.Commands.add('selectMuiOptionByText', (selectDataCy: string, optionText: string) => {
+  
   // Abre o dropdown do select
   cy.get(`[data-cy="${selectDataCy}"]`).click();
 
@@ -55,6 +56,27 @@ Cypress.Commands.add('selectMuiOptionByText', (selectDataCy: string, optionText:
 
   // Seleciona a opção desejada pelo texto
   cy.get('[role="listbox"]').contains('li', optionText).click();
+
+  // Aguarda a atualização do componente após a seleção
+  cy.wait(250);
+});
+
+
+// Adiciona um comando customizado para selecionar uma opção em um componente MUI Select pelo texto
+Cypress.Commands.add('selectMuiOptionByTextAddress', (selectDataCy: string, optionText: string) => {
+  
+  // Abre o dropdown do select
+  cy.get(`[data-cy="${selectDataCy}"]`).parent('.MuiInputBase-root').click();
+
+  cy.wait(250); // Aguarda o dropdown abrir
+
+  // Garante que a lista de opções está visível
+  cy.get('[role="listbox"]')
+    .scrollIntoView()
+    .should('be.visible');
+
+  // Seleciona a opção desejada pelo texto
+  cy.get('[role="listbox"]').contains('li', optionText).click({ force: true});
 
   // Aguarda a atualização do componente após a seleção
   cy.wait(250);
