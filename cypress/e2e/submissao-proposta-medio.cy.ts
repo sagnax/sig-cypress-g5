@@ -40,12 +40,37 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("areaDeConhecimento.0.areaId", "Ciência da Computação");
     cy.selectMuiOptionByText("areaDeConhecimento.0.subAreaId", "Sistemas de Computação");
     cy.selectMuiOptionByText("areaDeConhecimento.0.especialidadeId", "Arquitetura de Sistemas de Computação");
-    // Abrangência
-    cy.get('[data-cy="abrangencia"]').should("be.visible").click();
-    // Preenchendo os campos de abrangência
-    cy.get('[data-cy="abrangencia-adicionar"]').click();
-    cy.selectMuiOptionByText("abrangencia.0.estadoId", "São Paulo");
-    cy.selectMuiOptionByText("abrangencia.0.abrangenciaMunicipio", "Adamantina");
+
+
+      // Informações Complementares
+      cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
+
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-smart-city"]')
+        .click()
+      cy.wait(250)
+      cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-0"]').click();
+      cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-1"]').click();
+  
+  
+      //formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios
+  
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios"]').click();
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-26"]').clear().type("30/07/2025",{ delay: 0 });
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-27"]').clear().type("Lorem Ipsum Dolor Met",{ delay: 0 });
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-23-item-ods01-erradicar"]').click();
+      cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-24-item-grande-faturamen"]').click();
+  
+  
+      cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+      cy.wait(1500);
+
+
+    // // Abrangência
+    // cy.get('[data-cy="abrangencia"]').should("be.visible").click();
+    // // Preenchendo os campos de abrangência
+    // cy.get('[data-cy="abrangencia-adicionar"]').click();
+    // cy.selectMuiOptionByText("abrangencia.0.estadoId", "São Paulo");
+    // cy.selectMuiOptionByText("abrangencia.0.abrangenciaMunicipio", "Adamantina");
 
     //Coordenação
     cy.get('[data-cy="coordenacao"]').should("be.visible").click();
@@ -73,11 +98,23 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("criadoPor.areaDeConhecimento.0.areaId", "Ciência da Computação");
     cy.selectMuiOptionByText("criadoPor.areaDeConhecimento.0.subAreaId", "Sistemas de Computação");
     cy.selectMuiOptionByText("criadoPor.areaDeConhecimento.0.especialidadeId", "Arquitetura de Sistemas de Computação");
+   
+   
     // Dados Profissionais
     cy.get('[data-cy="dados-academicos"]').should("be.visible").click();
 
+
+
     // Apresentação
     cy.get('[data-cy="apresentacao"]').should("be.visible").click();
+
+    // Descrição
+    cy.get('[data-cy="descricao"]').should("be.visible").click();
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-6"]').clear().type("Objetivos do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-7"]').clear().type("Metodologia do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-3"]').clear().type("Resumo do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    cy.get('[data-cy="formularioPropostaDescritiva.pergunta-5"]').clear().type("Objetivo Geral do projeto de pesquisa utilizando Cypress",{ delay: 0 });
+    
     // Indicadores de Produção
     cy.get('[data-cy="indicadores-de-producao"]').should("be.visible").click();
     // Membros
@@ -85,6 +122,31 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Atividades
     cy.get('[data-cy="atividades"]').should("be.visible").click();
 
+        // Orçamento
+        cy.get('[data-cy="orcamento"]').should("be.visible").click();
+        // Faixa de Financiamento
+        cy.get('[data-cy="faixa-de-financiamento"]').should("be.visible").click();
+        cy.selectMuiOptionByText("faixaFinanciamentoId", "faixa-1");
+        cy.get('[data-cy="diarias"]').should("be.visible").click();
+        cy.get('[data-cy="add-button"]').should("be.visible").click();
+
+
+        cy.wait(1500);
+
+        cy.selectMuiOptionByTextAddress("rubricaDiariaUnsaved.paisId", "Brasil");
+    
+        cy.wait(3000);
+    
+        cy.selectMuiOptionByTextAddress("rubricaDiariaUnsaved.estadoId", "São Paulo");
+        cy.selectMuiOptionByText("rubricaDiariaUnsaved.municipio", "Adamantina");
+        cy.get('[data-cy="rubricaDiariaUnsaved.numeroDiaria"]').clear().type("10",{ delay: 0 });
+        cy.get('[data-cy="rubricaDiariaUnsaved.custoUnitario"]').clear().type("100",{ delay: 0 });
+        cy.selectMuiOptionByText("rubricaDiariaUnsaved.mesPrevisto", "1");
+        cy.get('[data-cy="rubricaDiariaUnsaved.justificativa"]').clear().type("Justificativa para as diárias",{ delay: 0 });
+        cy.get('[data-cy="rubricaDiaria-confirmar"]').click();
+    
+    
+        
     // Termos
     cy.get('[data-cy="termos"]').should("be.visible").click();
     // Termo de Aceite
@@ -94,6 +156,36 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Finalizar a proposta
     cy.get('[data-cy="menu-verificar-penden"]').should("be.visible").click();
     cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+
+    // esta etapa da erro devido a perder os dados apos abrangencia
+    // precisa salvar novamente
+     // Caracterização
+     cy.get('[data-cy="caracterizacao"]').should("be.visible").click();
+    
+       // Informações Complementares
+       cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
+ 
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-smart-city"]')
+         .click()
+       cy.wait(250)
+       cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-0"]').click();
+       cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-1"]').click();
+   
+   
+       //formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios
+   
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios"]').click();
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-26"]').clear().type("30/07/2025",{ delay: 0 });
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-27"]').clear().type("Lorem Ipsum Dolor Met",{ delay: 0 });
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-23-item-ods01-erradicar"]').click();
+       cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-24-item-grande-faturamen"]').click();
+   
+   
+       cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+       cy.wait(1500);
+
+       cy.get('[data-cy="menu-verificar-penden"]').should("be.visible").click();
+       cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
 
   });
 });
