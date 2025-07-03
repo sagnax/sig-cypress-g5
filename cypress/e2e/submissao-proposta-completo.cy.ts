@@ -43,6 +43,11 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("areaDeConhecimento.0.especialidadeId", "Arquitetura de Sistemas de Computação");
     // Informações Complementares
     cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
+
+  
+    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-0"]').should("be.visible").click();
+    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-1"]').should("be.visible").click();
+
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-energias-renovav"]').click();
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-26"]').clear().type("30/07/2025",{ delay: 0 });
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-27"]').clear().type("Lorem Ipsum Dolor Met",{ delay: 0 });
@@ -107,6 +112,10 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.selectMuiOptionByText("faixaFinanciamentoId", "faixa-1");
     cy.get('[data-cy="diarias"]').should("be.visible").click();
     cy.get('[data-cy="add-button"]').should("be.visible").click();
+
+
+    cy.wait(1500);
+
     cy.selectMuiOptionByTextAddress("rubricaDiariaUnsaved.paisId", "Brasil");
 
     cy.wait(3000);

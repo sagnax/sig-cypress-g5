@@ -66,10 +66,14 @@ Cypress.Commands.add('selectMuiOptionByText', (selectDataCy: string, optionText:
 Cypress.Commands.add('selectMuiOptionByTextAddress', (selectDataCy: string, optionText: string) => {
   
   // Abre o dropdown do select
-  cy.get(`[data-cy="${selectDataCy}"]`).parent('.MuiInputBase-root').click();
+  // cy.get(`.MuiInputBase-root:has([data-cy="${selectDataCy}"])`)
+  cy.get(`.MuiInputBase-root:has([data-cy="${selectDataCy}"])`)
+    .should('be.visible')
+    .click();
+
 
   cy.wait(250); // Aguarda o dropdown abrir
-
+  
   // Garante que a lista de opções está visível
   cy.get('[role="listbox"]')
     .scrollIntoView()
