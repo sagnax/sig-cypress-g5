@@ -18,7 +18,7 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     cy.get('[data-cy="editais-ver-mais"]').click();
 
     // Pesquisa pelo edital
-    cy.get(".MuiInputBase-input").type("Grupo-05 E.M. 001/2025 lucas-marques");
+    cy.get(".MuiInputBase-input").type("Grupo-05 E.C. 005/2025 lucas-marques");
     // Visualiza o primeiro edital encontrado
     cy.get(':nth-child(1) > .MuiListItem-root > .e1w0rc4q5 > .e1w0rc4q2 > .MuiButtonBase-root').click();
 

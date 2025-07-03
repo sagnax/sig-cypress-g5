@@ -44,21 +44,36 @@ describe("Sistema Integrado de Gestão para Fundações de Amparo a Pesquisas", 
     // Informações Complementares
     cy.get('[data-cy="informacoes-complementares"]').should("be.visible").click();
 
-  
-    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-0"]').should("be.visible").click();
-    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-1"]').should("be.visible").click();
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-smart-city"]')
+      .click()
+    cy.wait(250)
+    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-0"]').click();
+    cy.get('[data-cy-index="formularioPropostaInformacaoComplementar.pergunta-25-item-1"]').click();
 
-    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-energias-renovav"]').click();
+
+    //formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios
+
+    cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-25-item-agronegocios"]').click();
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-26"]').clear().type("30/07/2025",{ delay: 0 });
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-27"]').clear().type("Lorem Ipsum Dolor Met",{ delay: 0 });
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-23-item-ods01-erradicar"]').click();
     cy.get('[data-cy="formularioPropostaInformacaoComplementar.pergunta-24-item-grande-faturamen"]').click();
+
+
+    cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+    cy.wait(1500);
+
+    // cy.pause()
+
     // Abrangência
     cy.get('[data-cy="abrangencia"]').should("be.visible").click();
     // Preenchendo os campos de abrangência
     cy.get('[data-cy="abrangencia-adicionar"]').click();
     cy.selectMuiOptionByText("abrangencia.0.estadoId", "São Paulo");
     cy.selectMuiOptionByText("abrangencia.0.abrangenciaMunicipio", "Adamantina");
+
+    cy.get('[data-cy="menu-salvar"]').should("be.visible").click();
+    cy.wait(1500);
 
     //Coordenação
     cy.get('[data-cy="coordenacao"]').should("be.visible").click();
